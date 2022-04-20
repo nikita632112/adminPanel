@@ -84,11 +84,7 @@ const routes = [
   },
   {
     path: '/login',
-    component: () => import('layouts/AuthorizationLayout.vue'),
-    beforeEnter: (to, from, next) => {
-      console.log('middleware')
-      next()
-    }
+    component: () => import('layouts/AuthorizationLayout.vue')
   },
   {
     path: '/:catchAll(.*)*',

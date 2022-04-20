@@ -15,12 +15,20 @@ export default route(function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE,
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
+  let entryUrl = null
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.auth)) {
       if (Cookies.get('token') === null || Cookies.get('token') === undefined) {
+        if (to.path !== 'login') {
+          entryUrl = to.fullPath
+        }
         next({
           path: '/login'
         })
+      } else if (entryUrl) {
+        const url = entryUrl
+        entryUrl = null
+        next(url)
       } else {
         next()
       }

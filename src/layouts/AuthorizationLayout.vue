@@ -62,8 +62,7 @@ export default {
       try {
         (api.post('/login/code', { phone_number: this.phone, code: this.code })
           .then(response => {
-            Cookies.set('token', response.data.result.token, 60 * 60 * 12)
-            Cookies.set('user_role_id', response.data.result.user.user_role_id, 60 * 60 * 12)
+            Cookies.set('token', response.data.result.token)
             if (Cookies.get('token') != null) {
               this.$router.push({ path: '/' })
             }
