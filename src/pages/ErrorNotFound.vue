@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div id="body" class="fullscreen text-center q-pa-md flex flex-center">
     <div>
       <div id="errorcode">
         404
@@ -10,9 +10,8 @@
       </div>
 
       <q-btn
+        id="button"
         class="q-mt-xl"
-        color="white"
-        text-color="blue"
         unelevated
         to="/"
         label="Go Home"
@@ -30,10 +29,17 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+#body{
+  background-color: #212b34;
+  color: white;
+}
 #errorcode{
   font-size: 30vh;
 }
 #errormassege{
   opacity:.4;
+}
+#button{
+  background-color: #aa2310;
 }
 </style>

@@ -1,6 +1,6 @@
 # adminpanel (adminpanel)
 
-ggg
+
 
 ## Install the dependencies
 ```bash

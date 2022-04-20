@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-center q-pt-xl">
   <q-card class="my-card">
-    <q-card-section class="q-my-sm">
+    <q-card-section id="titleAuth">
       <div class="text-h3 text-center">
         Авторизация
       </div>
@@ -20,20 +20,34 @@
         mask = "+7 (###) ###-##-##"
         label="Номер телефона"
         class="input"
+        :disable="disable"
       />
-
+      <q-btn
+        label="Отправить код"
+        type="submit"
+        v-if="accessBtnCode"
+        @click="accessCode()"
+      />
       <q-input
         type="password"
         v-model="code"
         label="Код"
         class="input"
+        v-if="!accessBtnCode"
+        :disable="disableCode"
       />
-
+      <a
+        id="currentTime"
+        class="q-mt-sm"
+        href="#"
+        v-if="!accessBtnCode"
+        @click="linkCodeAgain()"
+      >
+        Отправить код еще раз через {{currentTime}}</a>
         <q-btn
-          id="btn"
           label="Войти"
           type="submit"
-          color="primary"
+          v-if="!accessBtnCode"
           @click="login()"
         />
     </q-form>
@@ -50,10 +64,34 @@ export default {
     return {
       phone: null,
       code: null,
-      user: []
+      user: [],
+      accessBtnCode: true,
+      disable: false,
+      disableCode: false,
+      currentTime: 30,
+      timer: null
     }
   },
   methods: {
+    accessCode () {
+      this.accessBtnCode = false
+      this.disable = true
+      this.startTimer()
+    },
+    startTimer () {
+      this.timer = setInterval(() => {
+        this.currentTime--
+      }, 1000)
+    },
+    stopTimer () {
+      clearTimeout(this.timer)
+      this.disableCode = true
+      this.disable = false
+    },
+    linkCodeAgain () {
+      this.disableCode = false
+      this.disable = true
+    },
     login () {
       api.post('/login', { phone_number: this.phone })
       this.sinIn()
@@ -71,17 +109,32 @@ export default {
         console.log(error.response.data.result.error.message)
       }
     }
+  },
+  watch: {
+    currentTime (time) {
+      if (time === 0) {
+        this.stopTimer()
+      }
+    }
   }
 }
 </script >
 <style scoped>
+#titleAuth{
+  background-color: #212b34;
+  color: white;
+}
 .input{
   width: 25vw
 }
-#btn{
-  width: 8vw;
+button{
+  background-color: #aa2310;
+  color: white;
 }
 .my-card{
   width: 30vw;
+}
+#currentTime{
+  color: #5b6062;
 }
 </style>
