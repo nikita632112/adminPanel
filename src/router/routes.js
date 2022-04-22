@@ -17,64 +17,64 @@ const routes = [
           }
       },
       {
-        path: '/users-list',
-        component: () => import('pages/MainLinks/UsersPage.vue'),
+        path: '/cities',
+        component: () => import('pages/MainLinks/Cities.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/rates',
-        component: () => import('pages/MainLinks/RatesPage.vue'),
+        path: '/types-of-ads',
+        component: () => import('pages/MainLinks/TypesOfAds.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/answer-questions',
-        component: () => import('pages/MainLinks/QuestionAnswerPage.vue'),
+        path: '/specialties',
+        component: () => import('pages/MainLinks/Specialties.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/referral-program',
-        component: () => import('pages/MainLinks/ReferralProgramPage.vue'),
+        path: '/rate-by-specialty',
+        component: () => import('pages/MainLinks/RateBySpecialty.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/bugs-errors',
-        component: () => import('pages/MainLinks/BugsErrorsPage.vue'),
+        path: '/office-staff',
+        component: () => import('pages/MainLinks/OfficeStaff.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/creating-ads',
-        component: () => import('pages/MainLinks/CreatingAdsPage.vue'),
+        path: '/unscheduled-advance-payment-settings',
+        component: () => import('pages/MainLinks/UnscheduledAdvancePaymentSettings.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/report-cards',
-        component: () => import('pages/MainLinks/ReportCardsPage.vue'),
+        path: '/types-of-FaQ',
+        component: () => import('pages/MainLinks/TypesOfFaQ.vue'),
         meta:
           {
             auth: true
           }
       },
       {
-        path: '/documents',
-        component: () => import('pages/MainLinks/DocumentsPage.vue'),
+        path: '/worker-files',
+        component: () => import('pages/MainLinks/WorkerFiles.vue'),
         meta:
           {
             auth: true

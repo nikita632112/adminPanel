@@ -36,14 +36,15 @@
         v-if="!accessBtnCode"
         :disable="disableCode"
       />
-      <a
+      <q-btn
         id="currentTime"
         class="q-mt-sm"
-        href="#"
+        href=""
         v-if="!accessBtnCode"
         @click="linkCodeAgain()"
+        :disable="disable"
       >
-        Отправить код еще раз через {{currentTime}}</a>
+        Отправить код еще раз через: {{currentTime}} сек</q-btn>
         <q-btn
           label="Войти"
           type="submit"
@@ -68,7 +69,7 @@ export default {
       accessBtnCode: true,
       disable: false,
       disableCode: false,
-      currentTime: 30,
+      currentTime: 10,
       timer: null
     }
   },
@@ -91,6 +92,8 @@ export default {
     linkCodeAgain () {
       this.disableCode = false
       this.disable = true
+      this.currentTime = 10
+      this.accessCode()
     },
     login () {
       api.post('/login', { phone_number: this.phone })
@@ -135,6 +138,14 @@ button{
   width: 30vw;
 }
 #currentTime{
-  color: #5b6062;
+  background-color: #FFFFFF;
+  border-width: 0;
+  color: #152731;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+}
+#currentTime:before{
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
 }
 </style>
