@@ -10,7 +10,7 @@
         <div class="col-7 text-center text-h6">{{selectLink}}</div>
 
         <div class="col-2 row justify-center">
-          <q-btn color="grey-8" label="Выйти" @click="logout"/>
+          <q-btn label="Выйти" @click="logout"/>
         </div>
       </q-toolbar>
     </q-header>
@@ -116,8 +116,15 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+header{
+  background-color: #212b34;
+  color: white;
+}
 #titlestyle{
   border-right: solid white 2px;
 }
-
+button{
+  background-color: #aa2310;
+  color: white;
+}
 </style>
