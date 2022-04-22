@@ -91,6 +91,9 @@ export default {
     linkCodeAgain () {
       this.disableCode = false
       this.disable = true
+      this.currentTime = 30
+      this.startTimer()
+      this.login()
     },
     login () {
       api.post('/login', { phone_number: this.phone })
