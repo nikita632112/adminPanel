@@ -15,31 +15,31 @@
       </q-toolbar>
     </q-header>
 
-  <div class="row">
-    <div class="col-3 q-ml-xl q-mt-xl q-mr-none">
-      <q-page-container
-        v-model="leftDrawerOpen"
-        show-if-above
-        bordered
-      >
-        <q-list>
-          <div class="text-center">
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-            @selectedLink="selectedLink"
-          />
-          </div>
-        </q-list>
-      </q-page-container>
+    <div class="row">
+      <div class="col-3 q-ml-xl q-mt-xl q-mr-none">
+        <q-page-container
+          v-model="leftDrawerOpen"
+          show-if-above
+          bordered
+        >
+          <q-list>
+            <div class="text-center">
+              <EssentialLink
+                v-for="link in essentialLinks"
+                :key="link.title"
+                v-bind="link"
+                @selectedLink="selectedLink"
+              />
+            </div>
+          </q-list>
+        </q-page-container>
+      </div>
+      <div class="col-8 q-ml-xl">
+        <q-page-container>
+          <router-view />
+        </q-page-container>
+      </div>
     </div>
-    <div class="col-8 q-ml-xl">
-      <q-page-container>
-        <router-view />
-      </q-page-container>
-    </div>
-  </div>
   </q-layout>
 </template>
 
@@ -49,44 +49,43 @@ import EssentialLink from 'components/EssentialLink.vue'
 import { Cookies } from 'quasar'
 const linksList = [
   {
-    title: 'Пользователи',
-    link: '/users-list'
+    title: 'Города',
+    link: '/cities'
   },
   {
-    title: 'Редактирование ставок',
-    link: '/rates'
+    title: 'Типы объявлений',
+    link: '/types-of-ads'
   },
   {
-    title: 'Редактирование раздела "Вопросы - ответы"',
-    link: '/answer-questions'
+    title: 'Специальности',
+    link: '/specialties'
   },
   {
-    title: 'Редактирование реферальной программы',
-    link: '/referral-program'
+    title: 'Ставки по специальностям',
+    link: '/rate-by-specialty'
   },
   {
-    title: 'Баги и ошибки',
-    link: '/bugs-errors'
+    title: 'Сотрудники офиса',
+    link: '/office-staff'
   },
   {
-    title: 'Создание объявлений',
-    link: '/creating-ads'
+    title: 'Настройки внепланового аванса',
+    link: '/unscheduled-advance-payment-settings'
   },
   {
-    title: 'Табеля',
-    link: '/report-cards'
+    title: 'Типы FaQ',
+    link: '/types-of-FaQ'
   },
   {
-    title: 'Документы',
-    link: '/documents'
+    title: 'Справочник файлов рабочего',
+    link: '/worker-files'
   }
 ]
-
 export default defineComponent({
   name: 'MainLayout',
   data () {
     return {
-      selectLink: 'Пользователи'
+      selectLink: 'Города'
     }
   },
   components: {
@@ -104,7 +103,6 @@ export default defineComponent({
   },
   setup () {
     const leftDrawerOpen = ref(false)
-
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
