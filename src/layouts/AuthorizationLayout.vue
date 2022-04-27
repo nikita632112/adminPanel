@@ -68,7 +68,7 @@ export default {
       accessBtnCode: true,
       disable: false,
       disableCode: false,
-      currentTime: 10,
+      currentTime: 60,
       timer: null
     }
   },
@@ -82,7 +82,7 @@ export default {
     startTimer () {
       this.timer = setInterval(() => {
         this.currentTime--
-      }, 1000)
+      }, 6000)
     },
     stopTimer () {
       clearTimeout(this.timer)
@@ -92,7 +92,7 @@ export default {
     linkCodeAgain () {
       this.disableCode = false
       this.disable = true
-      this.currentTime = 10
+      this.currentTime = 60
       this.accessCode()
     },
     login () {
