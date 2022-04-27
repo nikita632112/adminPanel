@@ -82,7 +82,7 @@ export default {
     startTimer () {
       this.timer = setInterval(() => {
         this.currentTime--
-      }, 6000)
+      }, 1000)
     },
     stopTimer () {
       clearTimeout(this.timer)
